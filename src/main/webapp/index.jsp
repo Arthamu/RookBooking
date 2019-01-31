@@ -5,34 +5,60 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<link rel='stylesheet' href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.css">
+<link rel="stylesheet" href="./css/bootstrap.min.css">
+<link rel='stylesheet' href="https://fullcalendar.io/releases/fullcalendar/4.0.0-alpha.4/fullcalendar.min.css">
 <script
-  src="https://code.jquery.com/jquery-3.3.1.js"
-  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-  crossorigin="anonymous"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.js"></script>
+  src="https://fullcalendar.io/releases/fullcalendar/4.0.0-alpha.4/fullcalendar.min.js"
+  ></script>
 
 
 <script type="text/javascript">
 
-$(function() {
+document.addEventListener('DOMContentLoaded', function() {
+	  var srcCalendarEl = document.getElementById('source-calendar');
+	  var destCalendarEl = document.getElementById('destination-calendar');
 
-	  // page is now ready, initialize the calendar...
+	  var srcCalendar = new FullCalendar.Calendar(srcCalendarEl, {
+		  timeZone: 'UTC',
+		    themeSystem: 'bootstrap4',
+		    header: {
+		      left: 'prev,next today',
+		      center: 'title',
+		      right: 'month,agendaWeek,agendaDay,listMonth'
+		    },
+		    weekNumbers: true,
+		    eventLimit: true, // allow "more" link when too many events
+		    events: [
+			      {
+			        title: 'First half',
+			        start: '2019-01-11T10:00:00',
+			        end: '2019-01-11T12:00:00'
+			      },
+			      {
+			        title: 'Second Date',
+			        start: '2019-01-11T13:00:00',
+			        end: '2019-01-11T16:00:00'
+			      }
+			    ]
+		  });
 
-	  $('#calendar').fullCalendar({
-	    // put your options and callbacks here
-		
-	  dayClick: function() {
-		    alert('a day has been clicked!');
-		  }
-	  })
+		 
+	
 
+
+
+
+	  srcCalendar.render();
 	});
-
 </script>
 </head>
-<body>
-<div id="calendar"></div>
+<body class='container-fluid'>
+
+	<div class='row mt-3'>
+	
+  <div id='source-calendar' class='col-6'></div>
+  <div id='destination-calendar' class='col-6'></div>
+
+	</div>
 </body>
 </html>
